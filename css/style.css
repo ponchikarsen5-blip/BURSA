@@ -1,0 +1,302 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(circle at 50% 45%,
+        #3524a8 0%,
+        #17164a 30%,
+        #07091c 70%,
+        #03040d 100%);
+
+    color: white;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 30px;
+}
+
+h1 {
+    font-size: clamp(32px, 7vw, 64px);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+h1 span {
+    background: linear-gradient(90deg, #9b6cff, #5c9dff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    max-width: 600px;
+    margin: 0 auto 50px;
+
+    font-size: 18px;
+    line-height: 1.6;
+    color: #aaaed0;
+}
+
+
+/* =========================
+   КНОПКА
+========================= */
+
+.magic-button {
+    position: relative;
+
+    width: 220px;
+    height: 220px;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+
+    background: linear-gradient(
+        145deg,
+        #c36cff,
+        #684cff 45%,
+        #327cff
+    );
+
+    box-shadow:
+        0 0 30px rgba(118, 79, 255, 0.7),
+        0 0 80px rgba(85, 91, 255, 0.35);
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+
+/* світіння навколо */
+
+.magic-button::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -25px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(130, 100, 255, 0.5);
+
+    animation: pulse 2s infinite;
+}
+
+
+/* ще одне кільце */
+
+.magic-button::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -45px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(100, 120, 255, 0.2);
+
+    animation: pulse 2s infinite 0.5s;
+}
+
+
+.magic-button:hover {
+    transform: scale(1.06);
+
+    box-shadow:
+        0 0 45px rgba(150, 100, 255, 0.9),
+        0 0 100px rgba(80, 100, 255, 0.5);
+}
+
+
+.magic-button:active {
+    transform: scale(0.94);
+}
+
+
+.star {
+    display: block;
+
+    font-size: 38px;
+
+    margin-bottom: 8px;
+
+    animation: rotate 4s linear infinite;
+}
+
+
+@keyframes pulse {
+
+    0%, 100% {
+        transform: scale(0.9);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+
+@keyframes rotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================
+   POPUP
+========================= */
+
+.popup {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(2, 3, 15, 0.75);
+
+    backdrop-filter: blur(10px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.3s ease;
+}
+
+
+.popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.popup-content {
+
+    width: min(90%, 420px);
+
+    padding: 45px 30px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background: linear-gradient(
+        145deg,
+        #171944,
+        #0b0d27
+    );
+
+    border: 1px solid rgba(150, 120, 255, 0.35);
+
+    box-shadow:
+        0 20px 80px rgba(0, 0, 0, 0.6),
+        0 0 50px rgba(100, 70, 255, 0.25);
+
+    transform: scale(0.7);
+
+    transition: 0.4s ease;
+}
+
+
+.popup.active .popup-content {
+    transform: scale(1);
+}
+
+
+.popup-icon {
+    font-size: 60px;
+
+    margin-bottom: 15px;
+
+    animation: bounce 0.7s ease;
+}
+
+
+.popup h2 {
+    font-size: 40px;
+
+    margin-bottom: 10px;
+}
+
+
+.popup p {
+    color: #aeb1d0;
+
+    margin-bottom: 30px;
+}
+
+
+#closePopup {
+
+    border: none;
+
+    padding: 13px 30px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(
+        90deg,
+        #865cff,
+        #497fff
+    );
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+#closePopup:hover {
+    transform: scale(1.05);
+}
+
+
+@keyframes bounce {
+
+    0% {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
